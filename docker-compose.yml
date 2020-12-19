@@ -14,7 +14,7 @@ services:
       KAFKA_HEAP_OPTS: "-Xmx256M -Xms256M"
 
   kafka-1:
-    image: confluentinc/cp-kafka:6.0.0
+    image: confluentinc/cp-kafka:5.3.4
     hostname: kafka-1
     ports:
       - 19092:19092
