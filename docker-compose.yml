@@ -29,8 +29,8 @@ services:
       KAFKA_ZOOKEEPER_CONNECT: "zookeeper-1:2181"
       KAFKA_BROKER_ID: "1"
       KAFKA_HEAP_OPTS: "-Xmx512M -Xms512M"
-      KAFKA_TRANSACTIONAL_ID_EXPIRATION_MS: 5000
-      KAFKA_LOG_RETENTION_MS: 5000
+      KAFKA_TRANSACTIONAL_ID_EXPIRATION_MS: 5000 # forcing both: ProducerState timeout to 5 seconds
+      KAFKA_LOG_RETENTION_MS: 5000 # forcing both: kafka retention to 5 seconds
       KAFKA_LOG_RETENTION_CHECK_INTERVAL_MS: 2000
       KAFKA_LOG_ROLL_MS: 1000
 
@@ -42,9 +42,8 @@ services:
       TOPIC: "sample"
       REPLICATION_FACTOR: 1
       NUMBER_OF_PARTITIONS: 1
-      MESSAGE_BACKOFF: 3700000 # sleep 30 seconds after sending another message
+      MESSAGE_BACKOFF: 30000 # sleep 30 seconds after sending another message
       KAFKA_ACKS: "all"
       KAFKA_ENABLE_IDEMPOTENCE: "true"
-      #KAFKA_TRANSACTIONAL_ID: "prod-1"
     depends_on:
       - kafka-1
