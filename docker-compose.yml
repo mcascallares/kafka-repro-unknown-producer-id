@@ -11,7 +11,7 @@ services:
       ZOOKEEPER_CLIENT_PORT: 2181
       ZOOKEEPER_SERVERS: zookeeper-1:2888:3888
       ZOOKEEPER_4LW_COMMANDS_WHITELIST: "*"
-      KAFKA_HEAP_OPTS: "-Xmx512M -Xms512M"
+      KAFKA_HEAP_OPTS: "-Xmx256M -Xms256M"
 
   kafka-1:
     image: confluentinc/cp-kafka:6.0.0
@@ -37,7 +37,7 @@ services:
   producer:
     build: ./producer
     environment:
-      JAVA_OPTS: "-Xmx256M -Xms256M"
+      JAVA_OPTS: "-Xmx128M -Xms128M"
       KAFKA_BOOTSTRAP_SERVERS: "kafka-1:9092"
       TOPIC: "sample"
       REPLICATION_FACTOR: 1
